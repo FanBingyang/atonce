@@ -27,7 +27,7 @@ public class FileController {
     public String Dir;
 
 
-    //上传图片接口
+    //上传图片接口，返回包含图片名称信息的map
     @RequestMapping("/uploadpic.do")
     public Map test(HttpServletRequest request){
 
