@@ -50,6 +50,9 @@ public class Notepad implements Serializable {
     @Column(name = "openid")
     private String openId;   //用户openid
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "status")
     private Integer status;   //记事本状态,1：正常  0：软删除
 

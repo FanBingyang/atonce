@@ -66,13 +66,15 @@ public class MyUtil {
      * @return
      */
     public static List<String> getImgName(String str){
+        List<String> list = new ArrayList<>();
+        if (str==null || str=="")
+            return list;
+
         //正则表达式，匹配：/(***).jpg
         String re = "/([^/])*\\.jpg";
         //创建对象
         Pattern pattern = Pattern.compile(re);
         Matcher matcher = pattern.matcher(str);
-
-        List<String> list = new ArrayList<>();
 
         while (matcher.find()){
             list.add(matcher.group());
