@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableJpaAuditing    // 为@CreatDate等注解有效，在类上面添加该注解
-@EnableScheduling
+@EnableScheduling     // 开启定时任务
 public class PhotosApplication {
 
     public static void main(String[] args) {
