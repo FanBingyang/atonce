@@ -34,6 +34,9 @@ public class NoteFolder implements Serializable {
     @Column(name = "openid")
     private String openId;   //用户openid
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "number")
     private Integer number;      // 文件夹里记事本数量
 

@@ -52,6 +52,19 @@ public class NoteFolderController {
     }
 
     /**
+     * 取消文件夹密码
+     * @param noteFolder
+     * @return
+     */
+    @RequestMapping("/cancelPassword.do")
+    public NoteFolder cancelPassword(NoteFolder noteFolder){
+        NoteFolder nf = nfs.findById(noteFolder.getId());
+        MyUtil.copyPropertiesIgnoreNull(noteFolder,nf);
+        nf.setPassword(null);
+        return nfs.save(nf);
+    }
+
+    /**
      * 根据id查询文件夹
      * @param id
      * @return

@@ -39,13 +39,14 @@ public class NotepadController {
     public Notepad creat(Notepad notepad){
         // 先查询出创建的所在文件夹
         NoteFolder nf = nfs.findById(notepad.getFolderId());
-        // 文件夹中记事本的数量加1
-        nf.setNumber(nf.getNumber() + 1);
-        nfs.save(nf);
         // 记事本状态为1，进行保存
         notepad.setStatus(1);
         notepad.setClassify(nf.getName());
-        return notepadService.save(notepad);
+        Notepad np = notepadService.save(notepad);
+        // 文件夹中记事本的数量加1
+        nf.setNumber(nf.getNumber() + 1);
+        nfs.save(nf);
+        return np;
     }
 
     /**
@@ -70,6 +71,19 @@ public class NotepadController {
             }
         }
         return notepadService.save(n);
+    }
+
+    /**
+     * 取消记事本密码
+     * @param notePad
+     * @return
+     */
+    @RequestMapping("/cancelPassword.do")
+    public Notepad cancelPassword(Notepad notePad){
+        Notepad np = notepadService.findById(notePad.getId());
+        MyUtil.copyPropertiesIgnoreNull(notePad,np);
+        np.setPassword(null);
+        return notepadService.save(np);
     }
 
     /**
